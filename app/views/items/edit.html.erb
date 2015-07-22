@@ -1,0 +1,9 @@
+<h3>
+  Edit this todo list item
+</h3>
+
+<%= form_tag item_path(@item.id), :method => "put" do %>
+  <input type="text" name="item[name]" value="<%= @item.name %>">
+  <textarea name="item[content]"><%= @item.content %></textarea>
+  <input type="submit" value="Edit this item">
+<% end %>

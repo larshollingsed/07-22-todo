@@ -1,0 +1,21 @@
+<h4>
+  <a href="<%= new_item_path %>">
+    Add a new item to your todo list
+  </a>
+</h4>
+
+<% @items.each do |item| %>
+  <h3>
+    <a href="<%= item_path(item.id) %>">
+      <%= item.name %>
+    </a>
+  </h3>
+  <p>
+    <a href="<%= item_path(item.id) %>" data-method="delete">
+      Delete this item
+    </a>
+    <a href="<%= edit_item_path(item.id) %>">
+      Edit this item
+    </a>
+  </p>
+<% end %>

@@ -1,0 +1,9 @@
+<h3>
+  Add a new todo list item
+</h3>
+
+<%= form_tag items_path do %>
+  <input type="text" name="item[name]" placeholder="Item name">
+  <textarea name="item[content]" placeholder="Item description"></textarea>
+  <input type="submit" value="Add this item">
+<% end %>
