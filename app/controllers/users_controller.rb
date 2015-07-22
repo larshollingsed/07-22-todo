@@ -18,22 +18,22 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     if params[:user][:password] != "" && BCrypt::Password.new(@user.password) != params[:user][:password]
       @user.encrypt_password(params[:user][:password])
       params[:user][:password] = @user.password
       if @user.update_attributes(user_params_and_password)
-        redirect_to login_path
+        redirect_to user_path
       else
         render "edit"
       end
     else
       if @user.update_attributes(user_params)
-        redirect_to login_path
+        redirect_to user_path
       else
         render "edit"
       end
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @items = @user.items
   end
   
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user.correct_password?(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
+      redirect_to user_path
     else
       render "login"
     end

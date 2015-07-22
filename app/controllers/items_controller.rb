@@ -8,9 +8,11 @@ class ItemsController < ApplicationController
   end
   
   def create
+    @user = User.find(session[:user_id])
     @item = Item.new(item_params)
     if @item.save
-      redirect_to items_path
+      @user.items << @item
+      redirect_to user_path(@user.id)
     else
       render "new"
     end

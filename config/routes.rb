@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   get "/users/logout" => "users#logout", :as => "logout"
   
+  get "/user" => "users#show", :as => "user"
+  
+  get "/edit_user" => "users#edit", :as => "edit_user"
+  
+  put "/user" => "users#update"
+  
   resources :items, :users
 
   # The priority is based upon order of creation: first created -> highest priority.

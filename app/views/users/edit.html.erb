@@ -2,7 +2,7 @@
   Edit <%= @user.name %>
 </h3>
 
-<%= form_tag user_path(@user.id), :method => "put" do %>
+<%= form_tag user_path, :method => "put" do %>
   <input type="text" name="user[name]" value="<%= @user.name %>">
   <input type="text" name="user[email]" value="<%= @user.email %>">
   <input type="password" name="user[password]" placeholder="change password?">

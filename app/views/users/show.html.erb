@@ -4,16 +4,23 @@
 <p>
   Email - <%= @user.email %>
 </p>
+<p>
+  <a href="<%= edit_user_path %>">
+    Edit this user
+  </a>
+  <a href="<%= user_path(@user.id) %>" data-method="delete">
+    Delete this user
+  </a>
+</p>
 
-<a href="<%= items_path %>" data-method="post">Add a todo item</a>
-
+<a href="<%= new_item_path %>">Add a todo item</a>
 
 <ul>
   <% @items.each do |item| %>
     <li>
       <a href="<%= item_path(item.id) %>"><%= item.name %></a>
       <p>
-        <a href="<%= item_path(item.id) %>" data-method="put">Edit this item</a>
+        <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
         <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
       </p>
     </li>
