@@ -27,15 +27,13 @@ class UsersController < ApplicationController
       @user.encrypt_password(params[:user][:password])
       params[:user][:password] = @user.password
       if @user.update_attributes(user_params_and_password)
-        binding.pry
-        redirect_to users_path
+        redirect_to login_path
       else
         render "edit"
       end
     else
       if @user.update_attributes(user_params)
-        binding.pry
-        redirect_to users_path
+        redirect_to login_path
       else
         render "edit"
       end
@@ -50,6 +48,25 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @items = @user.items
+  end
+  
+  def login
+  end
+  
+  def login_confirm
+    @user = User.find_by(email: params[:user][:email])
+    if @user.correct_password?(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user.id)
+    else
+      render "login"
+    end
+  end
+  
+  def logout
+    session[:user_id] = nil
+    redirect_to users_path
   end
   
   private

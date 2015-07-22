@@ -4,3 +4,18 @@
 <p>
   Email - <%= @user.email %>
 </p>
+
+<a href="<%= items_path %>" data-method="post">Add a todo item</a>
+
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+      <p>
+        <a href="<%= item_path(item.id) %>" data-method="put">Edit this item</a>
+        <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
+      </p>
+    </li>
+  <% end %>
+</ul>

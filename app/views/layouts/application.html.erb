@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <% if session[:user_id] != nil %>
+    <% @user_logged_in = User.find(session[:user_id])%>
+    <p>You are logged in as <%= @user_logged_in.name %></p>
+    <a href="<%= logout_path %>" >Logout</a>
+    <% else %>
+    <a href="<%= login_path %>">Please log in</a>
+    <% end %>
+  </header>
 
 <%= yield %>
 

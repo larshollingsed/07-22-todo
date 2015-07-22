@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   
+  get "/users/login" => "users#login", :as => "login"
+  
+  post "/users/login" => "users#login_confirm"
+
+  get "/users/logout" => "users#logout", :as => "logout"
+  
   resources :items, :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
