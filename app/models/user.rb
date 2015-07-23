@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include BCrypt
   
   has_many :items
+  has_many :categories
   validates :name, presence: true
   validates :email, presence: true
   

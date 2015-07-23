@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   end
   
   def new
+    @categories = User.find(session[:user_id]).categories
   end
   
   def create
@@ -44,7 +45,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params[:item].permit(:name, :content, :user_id)
+    params[:item].permit(:name, :content, :user_id, :category_id)
   end
   
 end

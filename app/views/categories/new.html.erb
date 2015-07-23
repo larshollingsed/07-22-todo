@@ -1,0 +1,9 @@
+<h2>
+  Add a new todo list category
+</h2>
+
+<%= form_tag categories_path do %>
+  <input type="text" name="category[name]">
+  <input type="hidden" name="category[user_id]" value="<%= session[:user_id] %>">
+  <input type="submit" value="Add new category">
+<% end %>

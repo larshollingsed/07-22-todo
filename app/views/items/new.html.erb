@@ -4,6 +4,15 @@
 
 <%= form_tag items_path do %>
   <input type="text" name="item[name]" placeholder="Item name">
+  <select name="item[category_id]">
+    <option>
+      -uncategorized-
+    </option>
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>">
+        <%= category.name %> 
+      </option>
+    <% end %>
   <textarea name="item[content]" placeholder="Item description"></textarea>
   <input type="submit" value="Add this item">
 <% end %>
