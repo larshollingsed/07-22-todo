@@ -1,0 +1,9 @@
+<h2>
+  Edit this category
+</h2>
+
+<%= form_tag category_path(@category.id), :method => "put" do %>
+  <input type="text" name="category[name]" value="<%= @category.name %>">
+  <input type="hidden" name="category[user_id]" value="<%= session[:user_id] %>">
+  <input type="submit" value="Edit this category">
+<% end %>
