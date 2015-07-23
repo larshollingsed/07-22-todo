@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  
+  before_action :check_login, except: [:new, :create, :login, :login_confirm]
   def index
     @users = User.all
   end
   
   def new
+    @user = User.new
   end
   
   def create
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id])
   end
   
   def update
@@ -71,6 +72,14 @@ class UsersController < ApplicationController
   end
   
   private
+  
+  def check_login
+    if session[:user_id] == nil
+      redirect_to new_user_path
+    else
+      @user = User.find(session[:user_id])
+    end
+  end
   
   def user_params
     params[:user].permit(:name, :email)
