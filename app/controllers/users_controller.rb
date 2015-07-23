@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @items = @user.items
+    @categories = @user.categories
   end
   
   def login
