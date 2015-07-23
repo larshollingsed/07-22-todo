@@ -19,11 +19,11 @@ class UsersController < ApplicationController
   end
   
   def edit
-    # @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id]) - from before_action
   end
   
   def update
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id]) - from before_action
     if params[:user][:password] != "" && BCrypt::Password.new(@user.password) != params[:user][:password]
       @user.encrypt_password(params[:user][:password])
       params[:user][:password] = @user.password
@@ -72,14 +72,6 @@ class UsersController < ApplicationController
   end
   
   private
-  
-  def check_login
-    if session[:user_id] == nil
-      redirect_to new_user_path
-    else
-      @user = User.find(session[:user_id])
-    end
-  end
   
   def user_params
     params[:user].permit(:name, :email)

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  
+  before_action :check_login
   def index
     @items = Item.all
   end
