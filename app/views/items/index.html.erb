@@ -12,10 +12,6 @@
           <h4>
             <a href="<%= item_path(item.id) %>"><%= item.name %></a>
           </h4>
-          <p>
-            <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
-            <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
-          </p>
         <% end %>
       <% end %>
     <% end %>
@@ -23,7 +19,7 @@
 <h3>
   Uncategorized
   <% @items.each do |item| %>
-    <% if item.category_id == 0%>
+    <% if item.category_id == 0 %>
       <h4>
         <a href="<%= item_path(item.id) %>"><%= item.name %></a>
       </h4>
