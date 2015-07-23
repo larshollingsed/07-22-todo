@@ -13,11 +13,15 @@
   </a>
 </p>
 
-<a href="<%= categories_path %>">
-  Manage categories
-</a>
+<p>
+  <a href="<%= categories_path %>">
+    Manage categories
+  </a>
+</p>
 
-<a href="<%= new_item_path %>">Add a todo item</a>
+<p>
+  <a href="<%= new_item_path %>">Add a todo item</a>
+</p>
 
 <% @categories.each do |category| %>
   <h3>
@@ -35,6 +39,21 @@
       <% end %>
     <% end %>
 </h3>
+<h3>
+  Uncategorized
+  <% @items.each do |item| %>
+    <% if item.category_id == 0%>
+      <h4>
+        <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+      </h4>
+      <p>
+        <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
+        <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
+      </p>
+    <% end %>
+  <% end %>
+</h3>
+
 
 
 
