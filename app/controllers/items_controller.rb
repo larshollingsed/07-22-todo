@@ -6,11 +6,10 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @categories = User.find(session[:user_id]).categories
+    @categories = @user.categories
   end
   
   def create
-    @user = User.find(session[:user_id])
     @item = Item.new(item_params)
     if @item.save
       @user.items << @item
