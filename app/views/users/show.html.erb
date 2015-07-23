@@ -24,31 +24,31 @@
 </p>
 
 <% @categories.each do |category| %>
-  <h3>
-    <%= category.name %>
-      <% @items.each do |item| %>
-        <% if item.category_id == category.id %>
-          <h4>
-            <a href="<%= item_path(item.id) %>"><%= item.name %></a>
-          </h4>
-        <% end %>
+  <div id="category_<%= category.id %>">
+    <h3>
+      <%= category.name %>
+    </h3>
+    <% @items.each do |item| %>
+      <% if item.category_id == category.id %>
+        <h4>
+          <input type="checkbox" id="item<%= item.id %>" value="<%= item.id %>">
+          <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+        </h4>
       <% end %>
     <% end %>
-</h3>
+  </div>
+<% end %>
 <h3>
-  Uncategorized
-  <% @items.each do |item| %>
-    <% if item.category_id == 0%>
-      <h4>
-        <a href="<%= item_path(item.id) %>"><%= item.name %></a>
-      </h4>
-      <p>
-        <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
-        <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
-      </p>
-    <% end %>
-  <% end %>
+Uncategorized
 </h3>
+<% @items.each do |item| %>
+  <% if item.category_id == 0 %>
+    <h4>
+      <input type="checkbox" id="item<%= item.id %>" value="<%= item.id %>" class="checkbox_for_item">
+      <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+    </h4>
+  <% end %>
+<% end %>
 
 
 

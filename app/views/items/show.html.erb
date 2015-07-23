@@ -2,7 +2,11 @@
   <%= @item.name %>
 </h3>
 <h4>
-  <%= @item.category.name %>
+  <% if @item.category != nil %>
+    <%= @item.category.name %>
+  <% else %>
+    Uncategorized
+  <% end %>
 </h4>
 <p>
   <%= @item.content %>
