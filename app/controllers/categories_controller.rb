@@ -34,6 +34,11 @@ class CategoriesController < ApplicationController
     redirect_to user_path
   end
   
+  def show
+    @category = Category.find(params[:id])
+    @items = @category.items
+  end
+  
   
   
   private

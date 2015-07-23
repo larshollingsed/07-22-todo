@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :check_login
   def index
-    @items = Item.all
+    @categories = @user.categories
+    @items = @user.items
   end
   
   def new

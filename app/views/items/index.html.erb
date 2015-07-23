@@ -4,18 +4,33 @@
   </a>
 </h4>
 
-<% @items.each do |item| %>
+<% @categories.each do |category| %>
   <h3>
-    <a href="<%= item_path(item.id) %>">
-      <%= item.name %>
-    </a>
-  </h3>
-  <p>
-    <a href="<%= item_path(item.id) %>" data-method="delete">
-      Delete this item
-    </a>
-    <a href="<%= edit_item_path(item.id) %>">
-      Edit this item
-    </a>
-  </p>
-<% end %>
+    <%= category.name %>
+      <% @items.each do |item| %>
+        <% if item.category_id == category.id %>
+          <h4>
+            <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+          </h4>
+          <p>
+            <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
+            <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
+          </p>
+        <% end %>
+      <% end %>
+    <% end %>
+</h3>
+<h3>
+  Uncategorized
+  <% @items.each do |item| %>
+    <% if item.category_id == 0%>
+      <h4>
+        <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+      </h4>
+      <p>
+        <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
+        <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
+      </p>
+    <% end %>
+  <% end %>
+</h3>
