@@ -9,6 +9,10 @@ class CategoriesController < ApplicationController
     end
   end
   
+  def index
+    @categories = User.find(session[:user_id]).categories
+  end
+  
   private
   
   def category_params

@@ -1,0 +1,21 @@
+<p>
+  <a href="<%= new_category_path %>">Add a new category</a>
+</p>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li>
+      <a href="<%= category_path(category.id) %>">
+        <%= category.name %>
+      </a>
+      <p>
+        <a href="<%= edit_category_path(category.id) %>">
+          Edit this category
+        </a>
+        <a href="<%= category_path(category.id) %>" data-method="delete">
+          Delete this category
+        </a>
+      </p>
+    </li>
+  <% end %>
+</ul>

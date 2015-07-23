@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       @user.items << @item
-      redirect_to user_path(@user.id)
+      redirect_to user_path
     else
       render "new"
     end
@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if @item.update_attributes(item_params)
-      redirect_to items_path
+      redirect_to user_path
     else
       render "edit"
     end
