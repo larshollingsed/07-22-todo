@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  root "users#login"
+  
   get "/users/login" => "users#login", :as => "login"
   
   post "/users/login" => "users#login_confirm"
