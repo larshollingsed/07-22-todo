@@ -4,6 +4,15 @@
 
 <%= form_tag item_path(@item.id), :method => "put" do %>
   <input type="text" name="item[name]" value="<%= @item.name %>">
+  <select name="item[category_id]">
+    <option>
+      -uncategorized-
+    </option>
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>" <% if @item.category_id == category.id %>selected<% end %>>
+        <%= category.name %> 
+      </option>
+    <% end %>
   <textarea name="item[content]"><%= @item.content %></textarea>
   <input type="submit" value="Edit this item">
 <% end %>

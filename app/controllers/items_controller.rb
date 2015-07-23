@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
   
   def edit
     @item = Item.find(params[:id])
+    @categories = User.find(session[:user_id]).categories
   end
   
   def update
