@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  
+  before_action :check_login
   def create
     @category = Category.new(category_params)
     if @category.save

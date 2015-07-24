@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(session[:user_id])
+    # @user = User.find(session[:user_id]) - from before_action
     @items = @user.items
     @categories = @user.categories
   end
@@ -69,6 +69,11 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to users_path
+  end
+  
+  def sort_items
+    @items = @user.items.order(:created_at)
+    @categories = @user.categories
   end
   
   private

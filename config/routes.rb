@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   put "/user" => "users#update"
   
+  get "/sorted_items" => "users#sort_items", :as => "items_by_date"
+  
   resources :items, :users, :categories
 
   # The priority is based upon order of creation: first created -> highest priority.

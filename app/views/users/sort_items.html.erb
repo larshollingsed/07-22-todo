@@ -1,0 +1,50 @@
+<h3>
+  <%= @user.name %>
+</h3>
+<p>
+  Email - <%= @user.email %>
+</p>
+<p>
+  <a href="<%= edit_user_path %>">
+    Edit this user
+  </a>
+  <br>
+  <a href="<%= user_path(@user.id) %>" data-method="delete">
+    Delete this user
+  </a>
+</p>
+
+<p>
+  <a href="<%= categories_path %>">
+    Manage categories
+  </a>
+</p>
+
+<p>
+  <a href="<%= new_item_path %>">Add a todo item</a>
+</p>
+
+<a href="<%= user_path %>">
+  See items by category
+</a>
+<hr>
+<% @items.each do |item| %>
+  <input type="checkbox" id="item<%= item.id %>" value="<%= item.id %>">
+  <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+  <br>
+  <%= item.created_at.to_s(format = :short) %>
+  <hr>
+<% end %>      
+
+
+<!-- <ul>
+  <% @items.each do |item| %>
+    <li>
+      <a href="<%= item_path(item.id) %>"><%= item.name %></a>
+      <p>
+        <a href="<%= edit_item_path(item.id) %>">Edit this item</a>
+        <a href="<%= item_path(item.id) %>" data-method="delete">Delete this item</a>
+      </p>
+    </li>
+  <% end %>
+</ul> -->

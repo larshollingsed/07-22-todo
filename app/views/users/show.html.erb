@@ -8,6 +8,7 @@
   <a href="<%= edit_user_path %>">
     Edit this user
   </a>
+  <br>
   <a href="<%= user_path(@user.id) %>" data-method="delete">
     Delete this user
   </a>
@@ -22,7 +23,11 @@
 <p>
   <a href="<%= new_item_path %>">Add a todo item</a>
 </p>
-
+<br>
+<a href="<%= items_by_date_path %>">
+  See items chronologically
+</a>
+<hr>
 <% @categories.each do |category| %>
   <div id="category_<%= category.id %>">
     <h3>
